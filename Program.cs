@@ -62,3 +62,70 @@ while(current <= num)
     current = current + 2;
 }
 */
+// ---------------------ДЗ к семинару№2----------------------------------------------------------------------------------------------------------
+// Задача №1. Напишите программу,которая принимает на вход трехзначное число и на выходе показывает вторую цифру этого числа.
+/*
+int SecondNum(int num)
+{
+    int a = num/10;
+    int res = a%10;
+    return res;
+}
+
+Console.Write("Введите трехзначное число: ");
+int num = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine($"Вторая цифра данного числа: {SecondNum(num)} ");
+*/
+
+// Задача №2. Напишите программу,которая выводит третьтю цифру заданного числа или сообщает, что третьей цифры нет.
+/*
+int Kolvo( int count)
+{
+    int a = 1;
+    while(count / 10 != 0)
+    { 
+        count = count / 10;
+        a++;
+    }
+return a;
+}
+
+int Dec(int num)
+{
+    int dec = 10;
+    while(num != 1)
+    {
+        dec = dec * 10;
+        num = num - 1;
+    }
+return dec;
+}
+Console.Write("Введите число: ");
+int num = Convert.ToInt32(Console.ReadLine());
+
+if(Kolvo(num) <= 2)
+{
+  Console.WriteLine($"В числе {num} нет третьей цифры"); 
+}
+else
+{
+    int exp = Kolvo(num) - 2;
+    int znam = Dec(exp);
+    int ThirdNumber = (num % znam)/ (znam / 10);
+    Console.WriteLine($"В числе {num} третья цифра {ThirdNumber}"); 
+}
+*/
+// Задача №3. Напишите программу,которая на принимает на вход цифру,обозначающую день недели,и проверяет,является ли этот день выходным.
+/*
+void Proverka(int a)
+{
+    if(a <= 5) Console.WriteLine("Работаем");
+       
+    else Console.WriteLine("Выходной");
+         
+}
+Console.Write("Введите число от 1 до 7: ");
+int а = Convert.ToInt32(Console.ReadLine());
+
+Proverka(а);
+*/
