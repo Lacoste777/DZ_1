@@ -1,131 +1,76 @@
-﻿
-// Задача №1. Напишите программу,которая на вход принимает два числа и выдает,какое число большее,а какое меньшее.
-/*
-Console.Write("Input first number: ");
-int num1 = Convert.ToInt32(Console.ReadLine());
-Console.Write("Input second number ");
-int num2 = Convert.ToInt32(Console.ReadLine());
+﻿//----------------------------------- ДЗ к семинару №3 ------------------------------------------------------------------------------------------------------
 
-if(num1 > num2)
-{
-    Console.WriteLine($"{num1} большее число,а {num2} меньшее число");
-}
-else
-{
-    Console.WriteLine($"{num2} большее число,а {num1} меньшее число");
-}
-*/
-// Задача №2. Напишите программу,которая принимает на вход три числа и выдает максимальное из этих чисел.
-/*
-Console.Write("Input first number: ");
-int num1 = Convert.ToInt32(Console.ReadLine());
-Console.Write("Input second number ");
-int num2 = Convert.ToInt32(Console.ReadLine());
-Console.Write("Input third number ");
-int num3 = Convert.ToInt32(Console.ReadLine());
-int max = num1;
 
-if(num1 < num2)
-{
-    max = num2;
-}
-if(max < num3)
-{
-    max = num3;
-}
- Console.WriteLine($"{max} большее число из трех введенных чисел");
-*/
-
-// Задача №3. Напишите программу,которая на вход принимает число и выдает, является ли число чётным.
+//Задача №1.Напишите программу,которая принимает на вход пятизначное число и проверяет,является ли палиндромом.
 /*
-Console.Write("Input number: ");
-int num = Convert.ToInt32(Console.ReadLine());
-int ost = num % 2;
-if(ost == 0)
+void Palindrom(int x)
 {
-    Console.WriteLine($"{num} чётное число");
+    int x1 = x/10000;
+    
+     int x5 = x%10;
+   
+    int sr2 = x/1000;
+    
+    int x2 = sr2%10;
+    
+    int sr4 = x%100;
+    
+    int x4 = sr4/10;
+    
+     if(x1 == x5 && x2 == x4)
+     {
+        Console.WriteLine("Данное число является палиндромом");
+     }
+     else 
+     {
+        Console.WriteLine("Данное число не является палиндромом");
+     }
 }
-else
-{
-    Console.WriteLine($"{num} нечётное число");
-}
+Console.Write("Введите любое пятизначное число: ");
+int x = Convert.ToInt32(Console.ReadLine());
+Palindrom(x);
 */
-// Задача №4. Напишите программу,которая на вход принимает число (N),а на выходе показывает все четные числа от 1 до N.
+//Задача №2. Напишите программу,которая принимает на вход координаты двух точек и находит расстояние между ними в 3D пространстве.
 /*
-Console.Write("Input number: ");
-int num = Convert.ToInt32(Console.ReadLine());
-int current = 2;
- 
-while(current <= num)
+double Distance( double x1, double y1, double z1, double x2, double y2, double z2)
 {
-    Console.Write(current + " ");
-    current = current + 2;
+    double x = Math.Pow(x2-x1,2);
+    double y = Math.Pow(y2-y1,2);
+    double z = Math.Pow(z2-z1,2);
+    double dis = Math.Sqrt(x+y+z);
+    return dis;
 }
-*/
-// ---------------------ДЗ к семинару№2----------------------------------------------------------------------------------------------------------
-// Задача №1. Напишите программу,которая принимает на вход трехзначное число и на выходе показывает вторую цифру этого числа.
-/*
-int SecondNum(int num)
-{
-    int a = num/10;
-    int res = a%10;
-    return res;
-}
-
-Console.Write("Введите трехзначное число: ");
-int num = Convert.ToInt32(Console.ReadLine());
-Console.WriteLine($"Вторая цифра данного числа: {SecondNum(num)} ");
+Console.Write("Введите x координату 1 точки : ");
+double x1 = Convert.ToInt32(Console.ReadLine());
+Console.Write("Введите y координату 1 точки : ");
+double y1 = Convert.ToInt32(Console.ReadLine());
+Console.Write("Введите z координату 1 точки : ");
+double z1 = Convert.ToInt32(Console.ReadLine());
+Console.Write("Введите x координату 2 точки : ");
+double x2 = Convert.ToInt32(Console.ReadLine());
+Console.Write("Введите y координату 2 точки : ");
+double y2 = Convert.ToInt32(Console.ReadLine());
+Console.Write("Введите z координату 2 точки : ");
+double z2 = Convert.ToInt32(Console.ReadLine());
+Console.Write($"Расстояние между данными точками {Distance(x1,y1,z1,x2,y2,z2)}");
 */
 
-// Задача №2. Напишите программу,которая выводит третьтю цифру заданного числа или сообщает, что третьей цифры нет.
+// Задача №3. Напишите программу, которая принимает на вход число(N) и выдает таблицу кубов чисел от 1 до N.
 /*
-int Kolvo( int count)
+void Cube(int n)
 {
-    int a = 1;
-    while(count / 10 != 0)
-    { 
-        count = count / 10;
-        a++;
-    }
-return a;
-}
-
-int Dec(int num)
-{
-    int dec = 10;
-    while(num != 1)
+    int i = 1;
+    while(i <= n)
     {
-        dec = dec * 10;
-        num = num - 1;
+        Console.WriteLine($"Куб числа {i} = {i*i*i}");
+        i++;
     }
-return dec;
 }
 Console.Write("Введите число: ");
-int num = Convert.ToInt32(Console.ReadLine());
-
-if(Kolvo(num) <= 2)
-{
-  Console.WriteLine($"В числе {num} нет третьей цифры"); 
-}
-else
-{
-    int exp = Kolvo(num) - 2;
-    int znam = Dec(exp);
-    int ThirdNumber = (num % znam)/ (znam / 10);
-    Console.WriteLine($"В числе {num} третья цифра {ThirdNumber}"); 
-}
+int n = Convert.ToInt32(Console.ReadLine());
+Cube(n);
 */
-// Задача №3. Напишите программу,которая на принимает на вход цифру,обозначающую день недели,и проверяет,является ли этот день выходным.
-/*
-void Proverka(int a)
-{
-    if(a <= 5) Console.WriteLine("Работаем");
-       
-    else Console.WriteLine("Выходной");
-         
-}
-Console.Write("Введите число от 1 до 7: ");
-int а = Convert.ToInt32(Console.ReadLine());
 
-Proverka(а);
-*/
+
+
+
