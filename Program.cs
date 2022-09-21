@@ -1,128 +1,70 @@
-﻿//--------------------------------------------ДЗ к семинару №4--------------------------------------------------------------------------------------------
-//Задача №1.Задайте массив заполненный случайными положительными трёхзначными числами. 
-//Напишите программу, которая покажет количество чётных чисел в массиве.
+﻿//--------------------------------------------ДЗ к семинару №6--------------------------------------------------------------------------------------------
+//Задача №1. Пользователь вводит с клавиатуры M чисел. Посчитайте, сколько чисел больше 0 ввёл пользователь.
 /*
-int[] CreateArray(int sz)
+int[] Numbers(int num)
 {
-    int[] arr = new int[sz];
-    for(int i = 0; i < sz; i++)
-        arr[i] = new Random().Next(100, 1000);
+    int[] arr = new int[num];
+    
+    for(int i = 0; i < num; i++)
+    {
+        Console.Write("Введите число :");
+        arr[i] = Convert.ToInt32(Console.ReadLine());
+    }
+
     return arr;
 }
-
-void PrintArray(int[] arr)
+void PrintArr(int[] arr)
 {
+
     Console.Write("[");
-    for(int i = 0; i < arr.Length; i++)
-        Console.Write($"{arr[i]}, ");
-    Console.WriteLine("\b\b]");
+    for(int i=0; i<arr.Length;i++)
+        if(i==arr.Length-1)
+            Console.Write($"{arr[i]} ]");
+        else
+            Console.Write($"{arr[i]}, ");
 }
 
-int NumEvenElements(int[] arr)
+int CountPositive(int[] arr)
 {
-    int count = 0;
-    for(int i = 0; i < arr.Length; i++)
-        if(arr[i] % 2 == 0)
-            count ++;
-    return count;
+    int zeroplus = 0;
+    foreach(int x in arr)
+        if(x >= 0) zeroplus++;
+    
+    return zeroplus;
 }
+Console.Write("Введите количество чисел: ");
+int n = Convert.ToInt32(Console.ReadLine());
 
-Console.Clear();
-Console.WriteLine("Введите размер массива: ");
-int size = Convert.ToInt32(Console.ReadLine());
-Console.WriteLine();
-
-int[] Array = CreateArray(size);
-PrintArray(Array);
-Console.WriteLine($"в данном массиве {NumEvenElements(Array)} четных элемента(ов)");
+int[] arr = Numbers(n);
+PrintArr(arr);
+Console.WriteLine($"Количество чисел больше 0 : {CountPositive(arr)}");
 */
-// Задача №2. Задайте одномерный массив, заполненный случайными числами.Найдите сумму элементов, стоящих на нечётных позициях.
+// Задача №2. Напишите программу, которая найдёт точку пересечения двух прямых, 
+//заданных уравнениями y = k1 * x + b1, y = k2 * x + b2; значения b1, k1, b2 и k2 задаются пользователем.
 /*
-int[] CreateArray(int n, int min, int max)
+Console.Write("введите b1 = ");
+double b1 = Convert.ToInt32(Console.ReadLine());
+Console.Write("введите k1 = ");
+double k1 = Convert.ToInt32(Console.ReadLine());
+Console.Write("введите b2 = ");
+double b2 = Convert.ToInt32(Console.ReadLine());
+Console.Write("введите k2 = ");
+double k2 = Convert.ToInt32(Console.ReadLine());
+if(b1 == b2 && k1 == k2)
 {
-    int [] arr = new int[n];
-    for(int i = 0; i < arr.Length; i++)
-        arr[i] = new Random().Next(min, max + 1);
-    return arr;
+    Console.WriteLine("Заданные прямые совпадают");
 }
-
-void PrintArray(int[] arr)
+if(k1 == k2)
 {
-    Console.Write("[");
-    for(int i = 0; i < arr.Length; i++)
-    {
-        Console.Write($"{arr[i]}, ");
-    }
-    Console.WriteLine("\b\b]");
-    Console.WriteLine();
+    Console.WriteLine("Заданные прямые не имеют точки пересечения");
 }
-
-int Sumevenelements(int[] arr)
+else
 {
-    int sum = 0;
-    for(int i = 1; i < arr.Length; i += 2)
-        sum += arr[i];
-    return sum;
+    double Xresult = (b2 - b1) / (k1 - k2);
+    double Yresult = k1 * Xresult + b1;
+    Console.WriteLine($"Координаты точки пересечения ({Xresult}; {Yresult})");
 }
-Console.Write("Введите размер массива: ");
-int size = Convert.ToInt32(Console.ReadLine());
-Console.Write("Введите минимальное значение массива min = ");
-int min = Convert.ToInt32(Console.ReadLine());
-Console.Write("Введите максимальное значение массива max = ");
-int max = Convert.ToInt32(Console.ReadLine());
-Console.WriteLine();
-int[] Array = CreateArray(size, min, max);
-PrintArray(Array);
-Console.WriteLine($"Сумма элементов массива, стоящих на нечётных позициях равна {Sumevenelements(Array)} ");
 */
-//Задача №3. Задайте массив вещественных чисел. Найдите разницу между максимальным и минимальным элементов массива.
-/*
-double[] CreateArray(int sz, int min, int max)
-{
-    double[] arr = new double[sz];
-    for(int i = 0; i < sz; i++)
-    {
-        double Int = new Random().Next(min, max + 1);
-        double Fract = new Random().NextDouble();
-        arr[i] = Int + Fract;
-    }
-    return arr;
-}
-
-void PrintArray(double[] arr)
-{
-    Console.Write("[");
-    for(int i = 0; i < arr.Length; i++)
-        Console.Write($"{arr[i]} ");
-    Console.WriteLine("\b\b]");
-}
-
-double Difference(double[] arr)
-{
-    double max = arr[0];
-    double min = arr[0];
-    for(int i = 0; i < arr.Length; i++)
-    {
-        if(arr[i] > max) max = arr[i];
-        if(arr[i] < min) min = arr[i];
-    }
-    double diff = max - min;
-    return diff;
-}
-Console.Write("Введите размер массива: ");
-int size = Convert.ToInt32(Console.ReadLine());
-Console.Write("Введите минимальное значение массива: ");
-int min = Convert.ToInt32(Console.ReadLine());
-Console.Write("Введите максимальное значение массива: ");
-int max = Convert.ToInt32(Console.ReadLine());
-double[] Array = CreateArray(size, min, max);
-PrintArray(Array);
-double difference = Difference(Array);
-Console.WriteLine($"Разница между максимальным и минимальным элементами массива равна {difference}");
-*/
-
-
-
 
 
 
